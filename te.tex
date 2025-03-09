@@ -1,0 +1,46 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+
+
+\begin{document}
+\title{Trabajo de Investigacion: Ajuste de curvas por mínimos cuadrados}
+
+\author{
+	Alberto Ramos Cruz
+	\and Moises Alonso Marroquin Ayala
+	\and Rene Eduardo Hernandez Castro
+	\and Roberto Jose Melgares Zelaya
+}
+\maketitle
+
+\section{Regresión lineal por mínimos cuadrados}
+\subsection{Ajuste de una recta por regresión por mínimos cuadrados}
+Con el fin de encontrar un modelo matemático que represente lo mejor posible a una serie de datos experimentales, es posible abordarlo por medio de una curva $y=\phi(x)$ que se aproxime a los datos, sin la necesidad de que esta curve pase por ellos.
+Lo anterior plantea el problema de verificar que en los terminos:
+$\{(x_i, f(x_i))\quad i = 1,2,3, \cdots, n\} $ se debe de hallar un $\phi(x)$ que verifique
+
+$$Minima = \sum_{n}^{i=1} (f(x_i) - \phi(x_i))^2$$
+\subsection{Linealización de relaciones no lineales}
+
+\section{Aproximación polinomial con mínimos cuadrados}
+\subsection{Parabola de mínimos cuadrados}
+La parábola de mínimos cuadrados pasa a ser una curva de $y=\phi(x)$ donde $\phi(x)$ es un polinomio de segundo grado que viene dado por la ecuación
+$$y = a_0 + a_1 x + a_2 x^2  $$
+donde $a_0, a_1, a_2 \in R$ y se determinan resolviendo las ecuaciones simultaneas de:
+
+$$\sum y = a_0n + a_1\sum x + a_2\sum x^2$$
+$$\sum xy = a_0\sum x + a_1\sum x^2 + a_2\sum x^3$$
+$$\sum x^2y = a_0\sum x^2 + a_1\sum x^3 + a_2\sum x^3$$
+
+\subsection{Ajuste de polinomios de grado \textit{n}	 (caso general)}
+
+\end{document}
