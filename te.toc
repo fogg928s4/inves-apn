@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Regresión lineal por mínimos cuadrados}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Ajuste de una recta por regresión por mínimos cuadrados}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Linealización de relaciones no lineales}{1}{}%
+\contentsline {section}{\numberline {2}Aproximación polinomial con mínimos cuadrados}{1}{}%
+\contentsline {subsection}{\numberline {2.1}Parabola de mínimos cuadrados}{1}{}%
+\contentsline {subsection}{\numberline {2.2}Ajuste de polinomios de grado \textit {n} (caso general)}{1}{}%

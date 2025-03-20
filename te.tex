@@ -1,46 +1,143 @@
 \documentclass[11pt,letterpaper]{article}
 
+% PAQUETES ++++++++++++++++++++++++++++++++
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagenumbering{arabic}
+\usepackage[pdftex]{graphicx}
+\usepackage{eqparbox}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+% \usepackage{blindtext}
+\usepackage{url}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{tabularray}
 
 
-
+%+++++++++++++++++++++++++++++++++++++++++++++++++++
+\graphicspath{ {./img/}}
+\pagenumbering{arabic}
 
 \begin{document}
-\title{Trabajo de Investigacion: Ajuste de curvas por mínimos cuadrados}
+\title{Trabajo de Investigación: Ajuste de Curvas por Mínimos Cuadrados}
 
 \author{
 	Alberto Ramos Cruz
-	\and Moises Alonso Marroquin Ayala
+	\and Moisés Alonso Marroquin Ayala
 	\and Rene Eduardo Hernandez Castro
 	\and Roberto Jose Melgares Zelaya
 }
 \maketitle
 
+
 \section{Regresión lineal por mínimos cuadrados}
 \subsection{Ajuste de una recta por regresión por mínimos cuadrados}
-Con el fin de encontrar un modelo matemático que represente lo mejor posible a una serie de datos experimentales, es posible abordarlo por medio de una curva $y=\phi(x)$ que se aproxime a los datos, sin la necesidad de que esta curve pase por ellos.
-Lo anterior plantea el problema de verificar que en los terminos:
-$\{(x_i, f(x_i))\quad i = 1,2,3, \cdots, n\} $ se debe de hallar un $\phi(x)$ que verifique
 
-$$Minima = \sum_{n}^{i=1} (f(x_i) - \phi(x_i))^2$$
+
 \subsection{Linealización de relaciones no lineales}
 
 \section{Aproximación polinomial con mínimos cuadrados}
-\subsection{Parabola de mínimos cuadrados}
-La parábola de mínimos cuadrados pasa a ser una curva de $y=\phi(x)$ donde $\phi(x)$ es un polinomio de segundo grado que viene dado por la ecuación
-$$y = a_0 + a_1 x + a_2 x^2  $$
-donde $a_0, a_1, a_2 \in R$ y se determinan resolviendo las ecuaciones simultaneas de:
+Con el fin de encontrar un modelo matemático que represente lo mejor posible a una serie de datos experimentales, es posible abordarlo por medio de una curva $y=\phi(x)$ que se aproxime a los datos, sin la necesidad de que esta curva pase por ellos.
+Lo anterior plantea el problema de verificar que en los términos:
+$\{(x_i, y_i)\quad i = 0,1,2,3, \cdots, N\} $ se debe de hallar un $\phi(x)$ que verifique
 
-$$\sum y = a_0n + a_1\sum x + a_2\sum x^2$$
-$$\sum xy = a_0\sum x + a_1\sum x^2 + a_2\sum x^3$$
-$$\sum x^2y = a_0\sum x^2 + a_1\sum x^3 + a_2\sum x^3$$
+$$Minima = \sum_{i=0}^{N} (y_i - \phi(x_i))^2$$
+
+Para evitar problemas se suele utilizar una diferencia cuadrada para evitar problemas de derivabilidad. 
+\subsection{Parábola de mínimos cuadrados}
+La parábola de mínimos cuadrados tiene como objetivo aproximar un conjunto de puntos 
+$(x_0, y_0),$ $(x_1, y_1),$ $ (x_2, y_2),$ $ \cdots , (x_n, y_N)$, donde $N$ es el número de elementos en el conjunto de puntos, 
+a través de una curva polinomial de grado 2. Entonces, podemos entender la parábola de mínimos cuadrados como una curva de $y=\phi(x)$ donde $\phi(x)$ es un polinomio de segundo grado que viene dado por la ecuación
+$$y = a_0 + a_1 x + a_2 x^2  $$
+donde $a_0, a_1, a_2 \in R$ y se determinan resolviendo las ecuaciones simultaneas : 
+
+\begin{equation} \label{eq:sist-parab} 
+	\left\{
+		\begin{array}{@{}l@{}}
+			\sum_{i=0}^{N} y_i  = a_0N + a_1\sum_{i=0}^{N} x_i + a_2\sum_{i=0}^{N} x_i^2 \cr\cr
+			\sum_{i=0}^{N} x_iy = a_0\sum_{i=0}^{N} x_i + a_1\sum_{i=0}^{N} x_i^2 + a_2\sum_{i=0}^{N} x_i^3 \cr\cr
+			\sum_{i=0}^{N} x_i^2y = a_0\sum_{i=0}^{N} x_i^2 + a_1\sum_{i=0}^{N} x_i^3 + a_2\sum_{i=0}^{N} x_i^4 		
+		\end{array}
+	\right.
+\end{equation}
+\linebreak 
+Las ecuaciones anteriores  son conocidads como \textit{ecuaciones normales de mínimos cuadrados}. Estas ecuaciones se obtienen al multiplicar la ecuación $y = a_0 + a_1 x + a_2 x^2  $ por  1, $x$, y $x^2$, respectivamente. Como se puede observar, se obtiene un \emph{sistema con 3 incógnitas y 3 ecuaciones.}
+\par
+Para obtener los valores que acompañan a las incógnitas $a_i$ en el sistema de ecuaciones se debe de obtener la suma de los productos, tomando en cuenta los valores respectivos de $x_i$ con sus imágenes en $y_i$; esto a excepción del valor $N$ que acompaña a la incógnita $a_0$ en la primera ecuación como se puede observar en la Ecuación \ref{eq:sist-parab}.
+\par
+A continuación, se procede a resolver el sistema de ecuaciones por medio de una matriz de 4$\times$3 para que de esste modo se obtengan los valores de las 3 incógnitas. En este caso, se puede usar cualquier método de resolución de sistemas de ecuaciones por medio de matrices, aunque para esta investigación se hará uso del método de Cramer. \emph{ Con el objetivo de mejorar la comprensión lectora, a partir de este punto se usará la siguiente notación.}
+
+ \begin{table}[!ht]
+ \centering
+	\begin{tabular}{ c c }
+	\hline
+	Símbolo & Significado  \\ \hline
+	$X$ &	$\mathlarger{\sum}_{i=0}^{N} x_i$  \\
+	$Y$ &   $\mathlarger{\sum}_{i=0}^{N} y_i$ \\
+	$X^2$ & $\mathlarger{\sum}_{i=0}^{N} x_i^2$ \\
+	$X^3$ & $\mathlarger{\sum}_{i=0}^{N} x_i^3$ \\ 
+	$X^4$ & $\mathlarger{\sum}_{i=0}^{N} x_i^4$ \\
+	$XY$ &  $\mathlarger{\sum}_{i=0}^{N} x_i y_i$	\\
+	$X^2Y$& $\mathlarger{\sum}_{i=0}^{N} x^2_i y_i$	\\ \hline
+	\end{tabular}
+	\label{table:simbologia}
+\end{table}
+
+Usando la notación anterior, pasamos a resolver la matriz y obtener las ecuaciones que nos dan los determinantes. \emph{Recordar que estas matrices no contienen variables simbólicas, sino que valores escalares representados con letras mayúsculas.}
+\begin{table}[H] \centering \begin{tabular}{c c c c c}
+%% resolucion a0
+$a_0 = \frac{
+		\begin{vmatrix}
+		 	Y &	X	& X^2 \\
+		 	XY &	X^2	& X^3 \\
+		 	X^2Y & X^3 & X^4	 
+		\end{vmatrix}}
+		{\begin{vmatrix}
+		 	N &	X	& X^2 \\
+		 	X &	X^2	& X^3 \\
+		 	X^2 & X^3 & X^4	 
+		\end{vmatrix}}
+		
+$ & &
+% resolucion a1
+$ a_1 = \frac{
+		\begin{vmatrix}
+		 	N &	Y	& X^2 \\
+		 	X &	XY	& X^3 \\
+		 	X^2 & X^2Y & X^4 
+		\end{vmatrix}}
+		{\begin{vmatrix}
+		 	N &	X	& X^2 \\
+		 	X &	X^2	& X^3 \\
+		 	X^2 & X^3 & X^4	 
+		\end{vmatrix}}
+$ & &
+% resolucion a2
+$ a_2 = \frac{
+		\begin{vmatrix}
+		 	N &	X	& Y \\
+		 	X &	X^2	& XY \\
+		 	X^2 & X^3 & X^2Y 
+		\end{vmatrix}}
+		{\begin{vmatrix}
+		 	N &	X	& X^2 \\
+		 	X &	X^2	& X^3 \\
+		 	X^2 & X^3 & X^4	 
+		\end{vmatrix}}
+$ \\
+\end{tabular} \end{table}
+
 
 \subsection{Ajuste de polinomios de grado \textit{n}	 (caso general)}
+aserejejadejedejedetudejedeseinoubadajabeedebugidiji
 
+\bibliographystyle{IEEEtran}
+\bibliography{bibi}
 \end{document}
