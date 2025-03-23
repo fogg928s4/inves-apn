@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.16)  22 MAR 2025 22:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.16)  23 MAR 2025 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -953,29 +953,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 149--152
 
 
 [3]
-Underfull \hbox (badness 1062) in paragraph at lines 219--221
-[]\OT1/cmr/m/it/10.95 Problema 4: \OT1/cmr/m/n/10.95 En la in-ves-ti-ga-ci^^Son
- de ac-ci-den-tes au-to-mo-vil^^S^^Psti-cos, el tiem-po to-tal re-que-ri-do
- []
-
-
-Underfull \hbox (badness 1112) in paragraph at lines 219--221
-\OT1/cmr/m/n/10.95 pro-por-cio-na la dis-tan-cia de fre-na-do D en me-tros de u
-n au-tom^^Sovil que via-ja a di-ver-sas
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 219--221
-
- []
-
-
 
 [4]
+<./img/mtz4.png, id=67, 505.89pt x 291.33844pt>
+File: ./img/mtz4.png Graphic file (type png)
+<use ./img/mtz4.png>
+Package pdftex.def Info: ./img/mtz4.png  used on input line 280.
+(pdftex.def)             Requested size: 180.67499pt x 104.05045pt.
 
-[5] (te.bbl)
 
-[6] (te.aux
+[5 <./img/mtz4.png>]
+<./img/res4.png, id=74, 592.46344pt x 309.40594pt>
+File: ./img/res4.png Graphic file (type png)
+<use ./img/res4.png>
+Package pdftex.def Info: ./img/res4.png  used on input line 304.
+(pdftex.def)             Requested size: 252.94499pt x 132.09772pt.
+<./img/parab4.png, id=75, 528.47438pt x 428.35031pt>
+File: ./img/parab4.png Graphic file (type png)
+<use ./img/parab4.png>
+Package pdftex.def Info: ./img/parab4.png  used on input line 309.
+(pdftex.def)             Requested size: 289.07999pt x 234.31232pt.
+
+
+[6 <./img/res4.png>] (te.bbl
+
+[7 <./img/parab4.png>])
+
+[8] (te.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -985,13 +989,13 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 24994 strings out of 473523
- 542944 string characters out of 5714630
- 982092 words of memory out of 5000000
- 47815 multiletter control sequences out of 15000+600000
- 567422 words of font info for 68 fonts, out of 8000000 for 9000
+ 25030 strings out of 473523
+ 543675 string characters out of 5714630
+ 985092 words of memory out of 5000000
+ 47851 multiletter control sequences out of 15000+600000
+ 567781 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,17n,105p,935b,685s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,17n,105p,935b,731s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1009,9 +1013,9 @@ s/cm/cmr17.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public
 nts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/rjmze/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rjmze/AppData/Local/P
 rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on te.pdf (6 pages, 223965 bytes).
+Output written on te.pdf (8 pages, 294251 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
+ 150 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

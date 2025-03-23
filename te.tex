@@ -18,7 +18,7 @@
 \usepackage{float}
 \usepackage{tabularray}
 \tcbuselibrary{most}
-
+\decimalpoint
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++
 \graphicspath{ {./img/}}
@@ -47,7 +47,7 @@
 %PUNTO 1 B // RENE
 %---------------
 \subsection{Linealización de relaciones no lineales}
-Una función $y$ se puede formar mediante la combinación de múltiples funciones lineales $f_1$,$f_1$,\dots,$f_n$y la minimización de la suma de los cuadrados de las diferencias entre la predicción del modelo y los datos generados en un sistema lineal de ecuaciones para los coeficientes del modelo. Si se construye de esta forma "y" es lineal en sus coeficientes. En este caso analizaremos la posibilidad de convertir relaciones no lineales a su forma lineal de forma similar al método descrito anteriormente. \cite{ualberta}Consideraremos los siguientes modelos:
+Una función $y$ se puede formar mediante la combinación de múltiples funciones lineales $f_1$,$f_1$,\dots,$f_n$y la minimización de la suma de los cuadrados de las diferencias entre la predicción del modelo y los datos generados en un sistema lineal de ecuaciones para los coeficientes del modelo. Si se construye de esta forma "y" es lineal en sus coeficientes. En este caso analizaremos la posibilidad de convertir relaciones no lineales a su forma lineal de forma similar al método descrito anteriormente.\cite{ualberta} Consideraremos los siguientes modelos:
 \begin{itemize}
 	\item Modelo Exponencial $y = \alpha e^{\beta x}$
 	\item Modelo Exponencial $y = \alpha x^{\beta}$
@@ -58,7 +58,7 @@ Una función $y$ se puede formar mediante la combinación de múltiples funcione
 	\item Modelo Exponencial ($y = \alpha x^{\beta}$) $\longrightarrow$ $\beta \ln x + \ln \alpha$
 \end{itemize}
 \par 
-En el caso del modelo exponencial se puede convertir como $(x_i, \ln(y_i))$ y con ello se puede hacer uso de la regresión lineal  para encontrar los coeficiente $\beta$ y $\alpha$. Para el caso del modelo potencial la información se puede expresar como $(\ln(x_i), \ln(y_i))$ y nuevamente hacer uno de la regresión lineal para encontrar los coeficientes $\beta$ y $\alpha$.\cite{nieves2011metodos} \cite{ualberta}
+En el caso del modelo exponencial se puede convertir como $(x_i, \ln(y_i))$ y con ello se puede hacer uso de la regresión lineal  para encontrar los coeficiente $\beta$ y $\alpha$. Para el caso del modelo potencial la información se puede expresar como $(\ln(x_i), \ln(y_i))$ y nuevamente hacer uno de la regresión lineal para encontrar los coeficientes $\beta$ y $\alpha$.\cite{ualberta}\cite{nieves2011metodos} 
 
 \subsubsection{Coeficiente de determinación para relaciones no lineales}
 Para determinar que tan los datos se ajustan al modelo se hará uso del ``coeficiente de determinación'' , si bien este coeficiente puede variar dependiente que software o articulo se esta obteniendo, en nuestro caso haremos uso de lo siguiente:
@@ -213,55 +213,102 @@ $ a_2 = \frac{
 		\end{vmatrix}}
 $ \\
 \end{tabular} \end{table}
-% la figura encapsula a colourbox
-\begin{figure}[H]
-\begin{tcolorbox}[title=Implementación en MATLAB]
-\textit{Problema 4:} En la investigación de accidentes automovilísticos, el tiempo total requerido para el frenado total de un automóvil después de que el conductor ha percibido un peligro está compuesto de su tiempo de reacción (el tiempo que transcurre en su detección del peligro y la aplicación de los frenos) más el tiempo de frenado (el tiempo que tarda el automóvil en detenerse después de la aplicación de los frenos). La siguiente tabla proporciona la distancia de frenado D en metros de un automóvil que viaja a diversas velocidades V en metros por segundo al momento en el cual el conductor detecta un peligro.
-\linebreak 
-
-	\begin{center}
+%% PROBLEMA 4
+\subsubsection{Ejercicio propuesto usando el método de la parábola de mínimos cuadrados}
+A continuación se presenta el siguiente problema:
+\begin{center}
+	\textbf{\textit{Problema 4:}} En la investigación de accidentes automovilísticos, el tiempo total requerido para el frenado total de un automóvil después de que el conductor ha percibido un peligro está compuesto de su tiempo de reacción (el tiempo que transcurre en su detección del peligro y la aplicación de los frenos) más el tiempo de frenado (el tiempo que tarda el automóvil en detenerse después de la aplicación de los frenos). La siguiente tabla proporciona la distancia de frenado D en metros de un automóvil que viaja a diversas velocidades V en metros por segundo al momento en el cual el conductor detecta un peligro.
+	\linebreak\par
 	\begin{tabular}{|c|c|c|c|c|c|c| }
 		\hline
 		Velociad V(m/s) &   20 & 30 & 40 & 50 & 60 & 70 \\
 		\hline
 		Distancia de frenado D(m) & 54 & 90 & 138 & 206 & 292 & 396 \\
 		\hline
-	\end{tabular}\end{center}
-	
-	\par
-	
+	\end{tabular}
+	\begin{itemize}
+		\item \textbf{a)} Encontrar la ecuación de la parábola de mínimos cuadrados que ajuste esta serie de datos.
+		\item \textbf{b)} Estimar la distancia $D$ de frenado cuando el automóvil se esta desplazando a 55 m/s y a 75 m/s.
+		\item \textbf{c)} Grafique la paráboa y los puntos de la tabla en un mismo plano cartesiano.
+	\end{itemize}
+\end{center}
 
-	Para resolver este problemas haremos uso de \emph{MATLAB} de la siguiente forma. En este caso las $X$ las usaremos como $V$, mientras que los valores de $Y$ serán $D$
+Para resolver este problemas haremos uso de \emph{MATLAB} de la siguiente forma. En este caso las $X$ las usaremos como $V$, mientras que los valores de $Y$ serán $D$
+%Implementacion matlab1
+\begin{figure}[H]
+\begin{tcolorbox}[title=Problema 4: Implementación en MATLAB]
 	\begin{verbatim}
 		%% Declarando los arreglos de los valores
 		X = [20, 30, 40, 50, 60, 70]
 		Y = [54, 90, 138, 206, 292, 396]
-		%% Procedemos con los valores de las sumas
 		suma_X = 0; suma_X2 = 0;
 		suma_X3 = 0; suma_X4 = 0;
 		suma_Y = 0; suma_XY = 0;
 		suma_X2Y = 0;
-		\end{verbatim}
-		\par
-		Todas las sumas van desde 0 hasta N, aunque para este caso ira desde 1 
-		hasta N pues MATLAB cuenta desde 1 en arreglos.
-		\begin{verbatim}
-		N = length(X);
-       for i = 1: N
-            suma_X = suma_X + X(i);
-            suma_X2 = suma_X2 + X(i) ^ 2;
-            suma_X3 = suma_X3 + X(i) ^ 3;
-            suma_X4 = suma_X4 + X(i) ^ 4;
-            suma_Y = suma_Y + Y(i);
-            suma_XY = suma_XY + X(i) * Y(i);
-            suma_X2Y = suma_X2Y + X(i) ^ 2 * Y(i);
-        end
-		\end{verbatim}
-
-	
-	
+		N = length(X); % Tamaño de la matriz de X
+		% Sumas de cada uno de los valores que se usaran para armar la matriz 
+for i = 1: N
+    suma_X = suma_X + X(i); % Suma Xi
+    suma_X2 = suma_X2 + X(i) ^ 2; % Suma Xi^2
+    suma_X3 = suma_X3 + X(i) ^ 3; % Suma Xi^3
+    suma_X4 = suma_X4 + X(i) ^ 4; % Suma Xi^4
+    suma_Y = suma_Y + Y(i); % Suma Yi
+    suma_XY = suma_XY + X(i) * Y(i); % Suma Xi * Yi
+    suma_X2Y = suma_X2Y + X(i) ^ 2 * Y(i); % Suma Xi^2 * Yi
+end
+\end{verbatim}
 \end{tcolorbox}
 \end{figure}
+Con esto podemos armar la matriz  \texttt{M} , y la submatriz \texttt{subM}, que contendrán la matriz principal con los datos de las sumas de X, y los valores de los resultados respectivamente. A su vez, haremos uso de una matriz auxiliar \texttt{Maux} que será una copia de la matriz original, con los valores de la submatriz \texttt{subM} en una de las columnas como lo requiere el método de determinantes.
+%matlab3
+\begin{figure}[H]
+\begin{tcolorbox}[breakable, title=Problema 4: Implementación en MATLAB]
+		\begin{verbatim}
+		%% Creacion de la matriz M y submatriz subM
+M = [ N suma_X suma_X2; suma_X suma_X2 suma_X3; suma_X2 suma_X3 suma_X4];
+subM = [suma_Y suma_XY suma_X2Y];
+
+%% encontrando los valores de a0, a1 y a2.
+for i = 1:3
+    Maux = M; %matriz auxiliar copia la original
+    Maux(:,i) = subM; % reemplaza los valores de la columna
+    a(i) = det(Maux) / det(M); % denominador del auxiliar con el de la original
+end
+		\end{verbatim}
+		\end{tcolorbox}
+		\centering
+		\includegraphics[width=2.5in]{mtz4.png}
+
+\end{figure}
+La demostración anterior queda resuelta la matriz y obtenemos los valores de $a_n$ (es de notar al lector que \textit{MATLAB} cuenta los arreglos y matrices desde el 1 por lo que \texttt{a(1)	} es igual a $a_0$) los cuales son: \par. 
+\begin{align*}
+a_0 &= 41.771428571430754 \\
+a_1 &= -1.095714285714397 \\
+a_2 &= 0.087857142857144 \\
+\end{align*}
+Con la matriz resuelta, junto con el arreglo con los valores de $a_0$, $a_1$ y $a_2$ podemos armar el polinomio en \textit{MATLAB} para resolver los incisos \textbf{a)} y \textbf{b)} evaluando la ecuación en los valores asignados. Por lo cual la ecuación de parábola que aproxima los datos es: 
+$$P^2(x) =  41.771428571430754  - 1.095714285714397x + 0.087857142857144x^2$$ 
+
+\begin{figure}[H]
+\begin{tcolorbox}[title=Problema 4: Implementación en MATLAB]
+\begin{verbatim}
+syms x;
+P = a(1) + a(2) * x  + a(3) * x ^ 2;
+aprox = subs(P, v); % v es el valor de la velocidad al que deseamos aproximar
+\end{verbatim}
+\end{tcolorbox}
+\end{figure}
+Ahora que tenemos evaluado el polinomio que describe la parábola, podemos evaluarlo en los valores para $x=55$ y $x=75$ para obtener una aproximación de la distancia requerida a esas velocidades, propuestas por el literal \textbf{b)}. Por lo tanto obtenemos las siguientes evaluaciones en el polinomio \texttt{P} en \textit{MATLAB}:
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.5in]{res4.png}
+\end{figure}
+A continuación se muestra como los valores iniciales como se indica en el literal \textbf{c)} se ven sobre la parábola creada. Donde se muestran los valores iniciales sobre la parábola construida:
+\begin{figure}[H]
+\centering
+\includegraphics[width=4in]{parab4.png}
+\end{figure}
+
 % ++++++++++++++++++++++++
 % SECCION 2B
 %++++++++++++++++++++++++
@@ -281,8 +328,7 @@ Para minimizar la función se debe derivar parcialmente con respecto a cada coef
 \end{align*}
 \par
 Una vez obtenido este sistema de ecuaciones se puede resolver mediante matrices o cualquier otro método de resolución de sistemas de ecuaciones.
-\par  Una vez encontrados los valores de todos los coeficientes se puede crear el polinomio de la forma  $p(n) = a_0 + a_1x + a_2x^2 + a_3x^3 + \dots + a_nx^n$ .
-\par Este es una expansión del método anterior que se desarrolló, puesto que a partir de esta forma general se puede obtener el caso de la parábola cuando se trabaja con un polinomio de grado $n = 2$.
+\par  Una vez encontrados los valores de todos los coeficientes se puede crear el polinomio de la forma  $p(n) = a_0 + a_1x + a_2x^2 + a_3x^3 + \dots + a_nx^n$ . Este es una expansión del método anterior que se desarrolló, puesto que a partir de esta forma general se puede obtener el caso de la parábola cuando se trabaja con un polinomio de grado $n = 2$.
 \cite{nieves2011metodos}
 
 
