@@ -9,30 +9,33 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \pagenumbering{arabic}
 \usepackage[pdftex]{graphicx}
-\usepackage{eqparbox}
 \usepackage{tabularx}
-\usepackage{booktabs}
+\usepackage{tcolorbox}
 \usepackage{array}
-% \usepackage{blindtext}
 \usepackage{url}
 \usepackage{relsize}
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{tabularray}
+\tcbuselibrary{most}
 
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++
 \graphicspath{ {./img/}}
 \pagenumbering{arabic}
+\newtcolorbox{matlab-code}[2][]{colback=red!3!white, colframe=red!75!black, colbacktitle=red!75!black, enhanced, attach boxed title to top center={yshift=-2mm}, title={#2}, #1}
 
+
+
+% +++++++++++++++++++++
 \begin{document}
 \title{Trabajo de Investigación: Ajuste de Curvas por Mínimos Cuadrados}
 
 \author{
 	Alberto Ramos Cruz
-	\and Moisés Alonso Marroquin Ayala
-	\and Rene Eduardo Hernandez Castro
-	\and Roberto Jose Melgares Zelaya
+	\and Moisés Alonso Marroquín Ayala
+	\and René Eduardo Hernández Castro
+	\and Roberto José Melgares Zelaya
 }
 \maketitle
 
@@ -40,9 +43,86 @@
 \section{Regresión lineal por mínimos cuadrados}
 \subsection{Ajuste de una recta por regresión por mínimos cuadrados}
 
-
+%---------------
+%PUNTO 1 B // RENE
+%---------------
 \subsection{Linealización de relaciones no lineales}
+Una función $y$ se puede formar mediante la combinación de múltiples funciones lineales $f_1$,$f_1$,\dots,$f_n$y la minimización de la suma de los cuadrados de las diferencias entre la predicción del modelo y los datos generados en un sistema lineal de ecuaciones para los coeficientes del modelo. Si se construye de esta forma "y" es lineal en sus coeficientes. En este caso analizaremos la posibilidad de convertir relaciones no lineales a su forma lineal de forma similar al método descrito anteriormente. \cite{ualberta}Consideraremos los siguientes modelos:
+\begin{itemize}
+	\item Modelo Exponencial $y = \alpha e^{\beta x}$
+	\item Modelo Exponencial $y = \alpha x^{\beta}$
+\end{itemize}
+\par Este tipo de modelos no lineales en $x$ y sus coeficientes desconocidos $\beta$ y $\alpha$ se pueden transformar en modelos no lineales mediante el uso de logaritmo natural. Aplicando logaritmo natural a los modelos nos queda:
+\begin{itemize}
+	\item Modelo Exponencial ($y = \alpha e^{\beta x}$) $\longrightarrow$ $\beta x + \ln \alpha$
+	\item Modelo Exponencial ($y = \alpha x^{\beta}$) $\longrightarrow$ $\beta \ln x + \ln \alpha$
+\end{itemize}
+\par 
+En el caso del modelo exponencial se puede convertir como $(x_i, \ln(y_i))$ y con ello se puede hacer uso de la regresión lineal  para encontrar los coeficiente $\beta$ y $\alpha$. Para el caso del modelo potencial la información se puede expresar como $(\ln(x_i), \ln(y_i))$ y nuevamente hacer uno de la regresión lineal para encontrar los coeficientes $\beta$ y $\alpha$.\cite{nieves2011metodos} \cite{ualberta}
 
+\subsubsection{Coeficiente de determinación para relaciones no lineales}
+Para determinar que tan los datos se ajustan al modelo se hará uso del ``coeficiente de determinación'' , si bien este coeficiente puede variar dependiente que software o articulo se esta obteniendo, en nuestro caso haremos uso de lo siguiente:
+\begin{equation}\label{equation:coeficiente}
+	R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - y(x_i ) ^2 }
+	{\sum_{i=1}^{n} (y_i)^2}
+\end{equation}
+
+Donde $R^2$ es equivalente a 1 menos el coeficiente entre la suma de cuadrados del modelo y la suma total de cuadrados de los datos. Esta definición de $R^2$ es la mas común usada para modelos no lineales. Para describir dicha definición y lo descrito anteriormente para convertir ambos modelos exponencial y potencial en relaciones líneas se hará los siguientes ejemplos:
+
+\subsubsection{Método Exponencial}
+Haremos un ajuste de modelo exponencial y potencial para la siguiente lista de datos: (1,1.93), (1.1,1.61), (1.2,2.27), (1.3,3.19), (1.4,3.19), (1.5,3.71), (1.6,4.29), (1.7,4.95), (1.8,6.07), (1.9,7.48), (2,8.72), (2.1,9.34), y (2.2,11.62). \par
+Recordando la forma exponencial, $y = \alpha e^{\beta x}$, es posible linealizarla mediante el uso de logaritmo natural para obtener la forma $\beta x + \ln \alpha$ y convertir una serie de datos a $(x_i, \ln(y_i))$. En el caso del modelo potencial, recordando su forma $y = \alpha e^{\beta x}$, se debe de linealizar también haciendo uso de logaritmo natural obteniendo $\beta \ln x + \ln \alpha$ , con ello convertiremos los datos a la forma final $(\ln(x_i), \ln(y_i))$. \textit{Esta oracion en adelante se ira} El procedimiento a continuación se realizará con los datos expresados para un caso de modelo exponencial, pero el procedimiento es el ``mismo'' para ambos modelos, cambiando únicamente su anotación final como veremos más adelante. Expresaremos los datos en formato de tabla para un mejor entendimiento, quedando de la siguiente manera. Se hará uso de $y*$ para representar $\ln(y_i)$
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c | c}
+	\hline
+		$x_i$ & $y_i$ \\ \hline
+        1	& 0.6575 \\
+        1.1	& 0.4762 \\
+        1.2	& 0.8198 \\
+        1.3	& 1.16 \\
+        1.4	& 1.16 \\
+        1.5	& 1.311 \\
+        1.6	& 1.4563 \\
+        1.7	& 1.5994 \\
+        1.8	& 1.8034 \\
+        1.9	& 2.0122 \\
+        2	& 2.1656 \\
+        2.1	& 2.2343 \\
+        2.2	& 2.4527 \\ \hline
+	\end{tabular}
+\end{table}
+Mediante el uso de regresión lineal es posible expresar $y*$ como: \textbf{$y* = \beta^* x + \alpha^*$ 	} obtendremos los coeficientes $\alpha^*$ y $\beta*$ de la siguiente manera:
+\begin{align*}
+	b^* &= \frac{n \sum_{i=1}^{n} x_iy_i^* - \sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i^*}{n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n}  x_i)^2} \\
+	a^* &= \frac{\sum_{i=1}^{n} y_i^* - b^* \sum_{i=1}^{n} x_i  }{n} \\
+\end{align*}
+Para el modelo potencial, es necesario sustituir los valores $x_i$ en la formula por las $x^*$ que corresponden a la evaluación de $\ln(x_i)$.
+\par Con la siguiente tabla obtenemos los datos para utilizar en los cálculos de las ecuaciones anteriores
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c | c | c | c}
+		$x_i$ & $y^*$ &	$X_iy^*$ & \\ \hline
+		1.00 & 	0.6575 &	0.6575	& 1.000 \\
+1.10 & 	0.4762 &	0.5239	& 1.2100 \\
+1.20 & 	0.8198 &	0.9837	& 1.4400 \\
+1.30 & 	1.1600 &	1.5080	& 1.6900 \\
+1.40 & 	1.1600 &	1.6240	& 1.9600 \\
+1.50 & 	1.3110 &	1.9665	& 2.2500 \\
+1.60 & 	1.4563 &	2.3301	& 2.5600 \\
+1.70 & 	1.5994 &	2.7190	& 2.8900 \\
+1.80 & 	1.8034 &	3.2460	& 3.2400 \\
+1.90 & 	2.0122 &	3.8232	& 3.6100 \\
+2.00 & 	2.1656 &	4.3312	& 4.000 \\
+2.10 & 	2.2343 &	4.6920	& 4.4100 \\
+2.20 & 	2.4527 &    5.3960	& 4.8400 \\ \hline
+Total= 20.8000 &	Total=19.3085	& Total=33.8013	& Total=35.1000 \\ \hline
+	\end{tabular}
+\end{table}
+Con lo anterior obtenemos los valores  de $\beta$ y $\alpha$ los cuales son $-1.0709$ y $1.5976$, respectivamente.
+%---------------
+%PUNTO 2
+%---------------
 \section{Aproximación polinomial con mínimos cuadrados}
 Con el fin de encontrar un modelo matemático que represente lo mejor posible a una serie de datos experimentales, es posible abordarlo por medio de una curva $y=\phi(x)$ que se aproxime a los datos, sin la necesidad de que esta curva pase por ellos.
 Lo anterior plantea el problema de verificar que en los términos:
@@ -72,20 +152,20 @@ Las ecuaciones anteriores  son conocidads como \textit{ecuaciones normales de m�
 \par
 Para obtener los valores que acompañan a las incógnitas $a_i$ en el sistema de ecuaciones se debe de obtener la suma de los productos, tomando en cuenta los valores respectivos de $x_i$ con sus imágenes en $y_i$; esto a excepción del valor $N$ que acompaña a la incógnita $a_0$ en la primera ecuación como se puede observar en la Ecuación \ref{eq:sist-parab}.
 \par
-A continuación, se procede a resolver el sistema de ecuaciones por medio de una matriz de 4$\times$3 para que de esste modo se obtengan los valores de las 3 incógnitas. En este caso, se puede usar cualquier método de resolución de sistemas de ecuaciones por medio de matrices, aunque para esta investigación se hará uso del método de Cramer. \emph{ Con el objetivo de mejorar la comprensión lectora, a partir de este punto se usará la siguiente notación.}
+A continuación, se procede a resolver el sistema de ecuaciones por medio de una matriz de 4$\times$3 para que de esste modo se obtengan los valores de las 3 incógnitas. \cite{spiegel}\cite{nieves2011metodos} En este caso, se puede usar cualquier método de resolución de sistemas de ecuaciones por medio de matrices, aunque para esta investigación se hará uso del método de Cramer. \emph{ Con el objetivo de mejorar la comprensión lectora, a partir de este punto se usará la siguiente notación.}
 
- \begin{table}[!ht]
+ \begin{table}[H]
  \centering
-	\begin{tabular}{ c c }
+	\begin{tabular}{ c | c }
 	\hline
 	Símbolo & Significado  \\ \hline
-	$X$ &	$\mathlarger{\sum}_{i=0}^{N} x_i$  \\
-	$Y$ &   $\mathlarger{\sum}_{i=0}^{N} y_i$ \\
-	$X^2$ & $\mathlarger{\sum}_{i=0}^{N} x_i^2$ \\
-	$X^3$ & $\mathlarger{\sum}_{i=0}^{N} x_i^3$ \\ 
-	$X^4$ & $\mathlarger{\sum}_{i=0}^{N} x_i^4$ \\
-	$XY$ &  $\mathlarger{\sum}_{i=0}^{N} x_i y_i$	\\
-	$X^2Y$& $\mathlarger{\sum}_{i=0}^{N} x^2_i y_i$	\\ \hline
+	$X$ &	$\mathlarger{\Sigma} x_i$  \\ 
+	$Y$ &   $\mathlarger{\Sigma} y_i$ \\
+	$X^2$ & $\mathlarger{\Sigma} x_i^2$ \\
+	$X^3$ & $\mathlarger{\Sigma }x_i^3$ \\ 
+	$X^4$ & $\mathlarger{\Sigma} x_i^4$ \\
+	$XY$ &  $\mathlarger{\Sigma} x_i y_i$	\\
+	$X^2Y$& $\mathlarger{\Sigma} x^2_i y_i$	\\ \hline
 	\end{tabular}
 	\label{table:simbologia}
 \end{table}
@@ -133,10 +213,78 @@ $ a_2 = \frac{
 		\end{vmatrix}}
 $ \\
 \end{tabular} \end{table}
+% la figura encapsula a colourbox
+\begin{figure}[H]
+\begin{tcolorbox}[title=Implementación en MATLAB]
+\textit{Problema 4:} En la investigación de accidentes automovilísticos, el tiempo total requerido para el frenado total de un automóvil después de que el conductor ha percibido un peligro está compuesto de su tiempo de reacción (el tiempo que transcurre en su detección del peligro y la aplicación de los frenos) más el tiempo de frenado (el tiempo que tarda el automóvil en detenerse después de la aplicación de los frenos). La siguiente tabla proporciona la distancia de frenado D en metros de un automóvil que viaja a diversas velocidades V en metros por segundo al momento en el cual el conductor detecta un peligro.
+\linebreak 
 
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c| }
+		\hline
+		Velociad V(m/s) &   20 & 30 & 40 & 50 & 60 & 70 \\
+		\hline
+		Distancia de frenado D(m) & 54 & 90 & 138 & 206 & 292 & 396 \\
+		\hline
+	\end{tabular}\end{center}
+	
+	\par
+	
 
+	Para resolver este problemas haremos uso de \emph{MATLAB} de la siguiente forma. En este caso las $X$ las usaremos como $V$, mientras que los valores de $Y$ serán $D$
+	\begin{verbatim}
+		%% Declarando los arreglos de los valores
+		X = [20, 30, 40, 50, 60, 70]
+		Y = [54, 90, 138, 206, 292, 396]
+		%% Procedemos con los valores de las sumas
+		suma_X = 0; suma_X2 = 0;
+		suma_X3 = 0; suma_X4 = 0;
+		suma_Y = 0; suma_XY = 0;
+		suma_X2Y = 0;
+		\end{verbatim}
+		\par
+		Todas las sumas van desde 0 hasta N, aunque para este caso ira desde 1 
+		hasta N pues MATLAB cuenta desde 1 en arreglos.
+		\begin{verbatim}
+		N = length(X);
+       for i = 1: N
+            suma_X = suma_X + X(i);
+            suma_X2 = suma_X2 + X(i) ^ 2;
+            suma_X3 = suma_X3 + X(i) ^ 3;
+            suma_X4 = suma_X4 + X(i) ^ 4;
+            suma_Y = suma_Y + Y(i);
+            suma_XY = suma_XY + X(i) * Y(i);
+            suma_X2Y = suma_X2Y + X(i) ^ 2 * Y(i);
+        end
+		\end{verbatim}
+
+	
+	
+\end{tcolorbox}
+\end{figure}
+% ++++++++++++++++++++++++
+% SECCION 2B
+%++++++++++++++++++++++++
 \subsection{Ajuste de polinomios de grado \textit{n}	 (caso general)}
-aserejejadejedejedetudejedeseinoubadajabeedebugidiji
+Si se desea aproximar una función dada de la forma tabular (pares x, y), de un polinomio grado N se realiza un procedimiento bastante similar al caso de la parábola de mínimos cuadrados. Para esto se debe minimizar la siguiente función:
+\begin{equation} \label{	equation:ajustte}
+	\sum_{i=1}^{m} \quad [ a_0 + a_1x_i + a_2x_i^2 + \dots + a_nx_i^n - f(x_i)] ^ 2
+\end{equation}
+\par
+Para minimizar la función se debe derivar parcialmente con respecto a cada coeficiente $a_i$ desde 0 hasta $n$, para luego igualar a cero cada una de las funciones que se obtengan. De esta forma se llegará al siguiente sistema de ecuaciones lineales.
+\begin{align*}
+	ma_0 + a_1\Sigma x + a_2\Sigma x^2 + \dots + a_n\Sigma x^n &= \Sigma y \\
+	a_0\Sigma x + a_1\Sigma x^2 + a_2\Sigma x^3 + \dots + a_n\Sigma x^{n+1} &= \Sigma xy\\
+	a_0\Sigma x ^2 + a_1\Sigma x^3 + a_2\Sigma x^4 + \dots + a_n\Sigma x^{n+2} &= \Sigma x^2y \\
+	\dots  & \dots \\
+	a_0\Sigma x^n + a_1\Sigma x^{n+1} + a_2\Sigma x^{n+2} + \dots + a_n\Sigma x^{2n} &= \Sigma  x^ny
+\end{align*}
+\par
+Una vez obtenido este sistema de ecuaciones se puede resolver mediante matrices o cualquier otro método de resolución de sistemas de ecuaciones.
+\par  Una vez encontrados los valores de todos los coeficientes se puede crear el polinomio de la forma  $p(n) = a_0 + a_1x + a_2x^2 + a_3x^3 + \dots + a_nx^n$ .
+\par Este es una expansión del método anterior que se desarrolló, puesto que a partir de esta forma general se puede obtener el caso de la parábola cuando se trabaja con un polinomio de grado $n = 2$.
+\cite{nieves2011metodos}
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibi}
