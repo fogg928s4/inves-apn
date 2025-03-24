@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.16)  23 MAR 2025 17:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.16)  23 MAR 2025 23:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,8 +837,8 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 e.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
 ) (te.aux
-LaTeX Info: Redefining \. on input line 11.
-LaTeX Info: Redefining \% on input line 11.
+LaTeX Info: Redefining \. on input line 9.
+LaTeX Info: Redefining \% on input line 9.
 )
 \openout1 = `te.aux'.
 
@@ -944,44 +944,81 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/rjmze/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+<./img/eq1.png, id=57, 556.32843pt x 249.18094pt>
+File: ./img/eq1.png Graphic file (type png)
+<use ./img/eq1.png>
+Package pdftex.def Info: ./img/eq1.png  used on input line 117.
+(pdftex.def)             Requested size: 325.215pt x 145.66568pt.
+
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
+<./img/res1.png, id=67, 556.32843pt x 96.36pt>
+File: ./img/res1.png Graphic file (type png)
+<use ./img/res1.png>
+Package pdftex.def Info: ./img/res1.png  used on input line 125.
+(pdftex.def)             Requested size: 289.07999pt x 50.07071pt.
+<./img/recta.png, id=68, 528.47438pt x 473.51906pt>
+File: ./img/recta.png Graphic file (type png)
+<use ./img/recta.png>
+Package pdftex.def Info: ./img/recta.png  used on input line 132.
+(pdftex.def)             Requested size: 252.94499pt x 226.63628pt.
+
+
+[3 <./img/eq1.png> <./img/res1.png> <./img/recta.png>]
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
 
 
-[3]
+[5]
 
-[4]
-<./img/mtz4.png, id=67, 505.89pt x 291.33844pt>
+[6]
+<./img/mtz4.png, id=85, 505.89pt x 291.33844pt>
 File: ./img/mtz4.png Graphic file (type png)
 <use ./img/mtz4.png>
-Package pdftex.def Info: ./img/mtz4.png  used on input line 280.
-(pdftex.def)             Requested size: 180.67499pt x 104.05045pt.
+Package pdftex.def Info: ./img/mtz4.png  used on input line 331.
+(pdftex.def)             Requested size: 202.35622pt x 116.53775pt.
 
 
-[5 <./img/mtz4.png>]
-<./img/res4.png, id=74, 592.46344pt x 309.40594pt>
+[7 <./img/mtz4.png>]
+<./img/res4.png, id=91, 592.46344pt x 309.40594pt>
 File: ./img/res4.png Graphic file (type png)
 <use ./img/res4.png>
-Package pdftex.def Info: ./img/res4.png  used on input line 304.
+Package pdftex.def Info: ./img/res4.png  used on input line 355.
 (pdftex.def)             Requested size: 252.94499pt x 132.09772pt.
-<./img/parab4.png, id=75, 528.47438pt x 428.35031pt>
+<./img/parab4.png, id=92, 528.47438pt x 428.35031pt>
 File: ./img/parab4.png Graphic file (type png)
 <use ./img/parab4.png>
-Package pdftex.def Info: ./img/parab4.png  used on input line 309.
+Package pdftex.def Info: ./img/parab4.png  used on input line 360.
 (pdftex.def)             Requested size: 289.07999pt x 234.31232pt.
 
 
-[6 <./img/res4.png>] (te.bbl
+[8 <./img/res4.png>]
 
-[7 <./img/parab4.png>])
+[9 <./img/parab4.png>]
+<./img/sisM.png, id=101, 1067.48813pt x 170.88844pt>
+File: ./img/sisM.png Graphic file (type png)
+<use ./img/sisM.png>
+Package pdftex.def Info: ./img/sisM.png  used on input line 462.
+(pdftex.def)             Requested size: 433.62pt x 69.41542pt.
 
-[8] (te.aux
-LaTeX Info: Redefining \. on input line 11.
-LaTeX Info: Redefining \% on input line 11.
+
+[10]
+<./img/ej2ans.png, id=105, 1065.22969pt x 197.23688pt>
+File: ./img/ej2ans.png Graphic file (type png)
+<use ./img/ej2ans.png>
+Package pdftex.def Info: ./img/ej2ans.png  used on input line 487.
+(pdftex.def)             Requested size: 433.62pt x 80.28677pt.
+
+
+[11 <./img/sisM.png>] (te.bbl)
+
+[12 <./img/ej2ans.png>] (te.aux
+LaTeX Info: Redefining \. on input line 9.
+LaTeX Info: Redefining \% on input line 9.
 )
  ***********
 LaTeX2e <2024-11-01> patch level 2
@@ -989,33 +1026,38 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 25030 strings out of 473523
- 543675 string characters out of 5714630
- 985092 words of memory out of 5000000
- 47851 multiletter control sequences out of 15000+600000
- 567781 words of font info for 69 fonts, out of 8000000 for 9000
+ 25092 strings out of 473523
+ 544807 string characters out of 5714630
+ 980214 words of memory out of 5000000
+ 47911 multiletter control sequences out of 15000+600000
+ 568503 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,17n,105p,935b,731s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmbxti10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rjmze/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/rjmze/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rjmze/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users
-/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr17.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmr8.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/rjmze/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/rjmze/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on te.pdf (8 pages, 294251 bytes).
+ 98i,17n,105p,683b,685s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\rjmze\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1095.pk> <C:\Users\rjmze\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\tcti1095.pk><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/rjmze/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rjmze/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/rjmz
+e/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
+sers/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.p
+fb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/rjmze/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/rjmze/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rjmze/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/rjm
+ze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
+Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10
+.pfb>
+Output written on te.pdf (12 pages, 554460 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
+ 192 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 172 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

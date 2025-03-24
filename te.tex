@@ -41,7 +41,98 @@
 
 
 \section{Regresión lineal por mínimos cuadrados}
+%++++++++++++++++++
+%PUNTO 1 A ALBERTO
+%+++++++++++++++++++++++++
 \subsection{Ajuste de una recta por regresión por mínimos cuadrados}
+Esta es una técnica que, dados un conjunto de pares ordenados $(X,Y)$, nos permite adaptar una recta que se acerque lo más posible a todos los puntos de manera que represente de mejor forma una serie de datos. De esta forma minimizando la suma de los cuadrados de las diferencias entre los valores observados $Y$ y los valores predichos por la recta, reduciendo así la diferencia entre los datos reales y la recta adaptada, para esto se necesita utilizar la formula general de una recta: $$ y = mx + b$$
+Donde se tiene que 
+\begin{itemize}
+	\item $y$ es el valor predicho por la formula como la variable dependiente.
+	\item $x$ es el valor de la variable dependiente.
+	\item $m$ es la pendiente de la recta.
+	\item $b$ es la intersección de la recta con el eje $Y$.
+\end{itemize}
+Para método lo que se busca encontrar $m$ recurrimos a la fórmula:
+\begin{equation}
+m = \frac{\sum_{i=1}^{n} x_iy_i - \frac{\sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i}{n}}{\sum_{i=1}^{n} x_i^2 - \frac{(\sum_{i=1}^{n} x_i)^2}{n}}
+\end{equation}
+Por otro lado, para encontrar $b$ hacemos uso de la fórmula:
+\begin{equation}
+b = \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}
+\end{equation}
+Donde $n$ representa la cantidad de datos que se tienen en la serie de pares ordenados. De esta manera se garantiza que la que se acerca lo mas posible a todos los puntos, minimizando el error cuadrático, y reflejando de manera más precisa la relación entre las variables.\cite{nieves2011metodos} \par A continuación, se demuestra un ejercicio resuelto haciendo uso del método anterior junto con un algoritmo en \textit{MATLAB}
+\subsubsection{Ejercicio propuesto haciendo uso del método de ajuste de recta por mínimos cuadrados}
+\begin{center}
+\textit{\textbf{Ejercicio 1: } En la siguiente tabla, T es la temperatura de una bobina en °C  y r es la resistencia de la bobina en Ohms ($\Omega$). Ajuste una recta de mínimos cuadrados para representar r en términos de T. Estime cual sería la resistencia de una bobina que está a 65 °C. Posteriormente, grafique la recta de mínimos cuadrados y los puntos de la tabla en un solo plano cartesiano}.\linebreak \par
+\begin{tabular}{c|cccccc}
+ \hline 
+ T (°C) & 10.50 & 29.49 & 42..70 & 60.01 & 75.51 & 91.05 \\ 
+ \hline 
+ r ($\Omega$) & 10.421 & 10.939 & 11.321 & 11.794 & 12.242 & 12.668 \\ 
+ \hline 
+ \end{tabular} 
+\end{center}
+Para este problema nuestra \textit{variable independiente} serán los valores de la temperatura \textit{T}, mientras que nuestra \textit{variable dependiente} serán los valores de la resistencia, por ello los valores de $X$ y $Y$ serán la temperatura y la resistencia, respectivamente. Comenzamos el algoritmo en \textit{MATLAB} agregando los datos iniciales y realizando las primeras sumas de los valores de $X$, $Y$,  $X^2$, y $XY$, sabiendo que $n = 6$. 
+
+\begin{figure}[H]
+\begin{tcolorbox}[title = Problema 1: Declaración de valores iniciales y sumatorias]
+\begin{verbatim}
+T = [10.50 29.49 42.70 60.01 75.51 91.05]; % X - variable independiente
+R = [10.421 10.939 11.321 11.794 12.242 12.668]; % Y variable dependiente
+n = length(T);
+
+sumatoriaX = sum(T); % sumatoria de X
+sumatoriaY = sum(R); % sumatoria de Y
+multiXY=0; % Para la sumatoria de XY
+X2=0; % Para la sumatoria de X^2
+
+for i=1:n
+    multiXY = multiXY+(T(i)*R(i));
+    X2 = X2 + T(i)^2;
+end
+\end{verbatim}
+\end{tcolorbox}
+\end{figure}
+Con los valores encontrados de las sumas, podemos pasara  encontrar $m$ y $b$ para luego armar la función lineal de $r=mt + b$
+\begin{figure}[H]
+\begin{tcolorbox}[title = Problema 1: Armando la función lineal de aproximación]
+\begin{verbatim}
+% Obteniendo la pendiente en mi función y=mx+b que se reescribe como r = mT+b
+m = (multiXY-((sumatoriaX*sumatoriaY)/n))/(X2-(sumatoriaX^2/n));
+
+% Obteniendo el intersecto b de la función
+b = (sumatoriaY-(m*sumatoriaX))/n;
+
+%se escribe la función
+syms t;
+r = m*t+b;
+\end{verbatim}
+\end{tcolorbox}
+\end{figure}
+
+Con las líneas anteriores se obtienen finalmente los valores de la pendiente y el intercepto de la función lineal que se puede usar para aproximar valores. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=4.5in]{eq1.png}
+\caption{Los valores de $b$ y $m$ obtenidos con el algoritmo junto con la función}
+\label{figure:lineal1} 
+\end{figure}
+Ahora es posible obtener la estimación deseada de la resistencia a una temperatura de 65 °C haciendo uso del comando \texttt{double(subs(r,65))}. Para finalizar el ejercicio, mostraremos como la gráfica de la recta se sobrepone a los valores iniciales provistos por el ejercicio. 
+% resultado
+\begin{figure}[H]
+\centering
+\includegraphics[width=4in]{res1.png}
+\caption{Resultado de la evaluación de la función $r=mt + b$ en 65, obteniendo así una respuesta de \textbf{11.940620187302814 ohms}}
+\label{figure:res1}
+\end{figure}
+%grafica
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.5in]{recta.png}
+\caption{Gráfica de la recta obtenida con el método de estudio con los valores iniciales de la temperatura y la resistencia sobre la misma. }
+\label{figure:recta1}
+\end{figure}
 
 %---------------
 %PUNTO 1 B // RENE
@@ -70,56 +161,19 @@ Para determinar que tan los datos se ajustan al modelo se hará uso del ``coefic
 Donde $R^2$ es equivalente a 1 menos el coeficiente entre la suma de cuadrados del modelo y la suma total de cuadrados de los datos. Esta definición de $R^2$ es la mas común usada para modelos no lineales. Para describir dicha definición y lo descrito anteriormente para convertir ambos modelos exponencial y potencial en relaciones líneas se hará los siguientes ejemplos:
 
 \subsubsection{Método Exponencial}
-Haremos un ajuste de modelo exponencial y potencial para la siguiente lista de datos: (1,1.93), (1.1,1.61), (1.2,2.27), (1.3,3.19), (1.4,3.19), (1.5,3.71), (1.6,4.29), (1.7,4.95), (1.8,6.07), (1.9,7.48), (2,8.72), (2.1,9.34), y (2.2,11.62). \par
-Recordando la forma exponencial, $y = \alpha e^{\beta x}$, es posible linealizarla mediante el uso de logaritmo natural para obtener la forma $\beta x + \ln \alpha$ y convertir una serie de datos a $(x_i, \ln(y_i))$. En el caso del modelo potencial, recordando su forma $y = \alpha e^{\beta x}$, se debe de linealizar también haciendo uso de logaritmo natural obteniendo $\beta \ln x + \ln \alpha$ , con ello convertiremos los datos a la forma final $(\ln(x_i), \ln(y_i))$. \textit{Esta oracion en adelante se ira} El procedimiento a continuación se realizará con los datos expresados para un caso de modelo exponencial, pero el procedimiento es el ``mismo'' para ambos modelos, cambiando únicamente su anotación final como veremos más adelante. Expresaremos los datos en formato de tabla para un mejor entendimiento, quedando de la siguiente manera. Se hará uso de $y*$ para representar $\ln(y_i)$
-\begin{table}[H]
-	\centering
-	\begin{tabular}{c | c}
-	\hline
-		$x_i$ & $y_i$ \\ \hline
-        1	& 0.6575 \\
-        1.1	& 0.4762 \\
-        1.2	& 0.8198 \\
-        1.3	& 1.16 \\
-        1.4	& 1.16 \\
-        1.5	& 1.311 \\
-        1.6	& 1.4563 \\
-        1.7	& 1.5994 \\
-        1.8	& 1.8034 \\
-        1.9	& 2.0122 \\
-        2	& 2.1656 \\
-        2.1	& 2.2343 \\
-        2.2	& 2.4527 \\ \hline
-	\end{tabular}
-\end{table}
-Mediante el uso de regresión lineal es posible expresar $y*$ como: \textbf{$y* = \beta^* x + \alpha^*$ 	} obtendremos los coeficientes $\alpha^*$ y $\beta*$ de la siguiente manera:
+Recordando la forma exponencial, $y = \alpha e^{\beta x}$, es posible linealizarla mediante el uso de logaritmo natural para obtener la forma $\beta x + \ln \alpha$ y convertir una serie de datos a $(x_i, \ln(y_i))$. En el caso del modelo potencial, recordando su forma $y = \alpha e^{\beta x}$, se debe de linealizar también haciendo uso de logaritmo natural obteniendo $\beta \ln x + \ln \alpha$ , con ello convertiremos los datos a la forma final $(\ln(x_i), \ln(y_i))$.  \cite{ualberta}
+\par
+Mediante el uso de regresión lineal es posible expresar $y*$ como: \textbf{$y* = \beta^* x + \alpha^*$ 	} obtendremos los coeficientes $\alpha^*$ y $\beta^*$ de la siguiente manera:
 \begin{align*}
-	b^* &= \frac{n \sum_{i=1}^{n} x_iy_i^* - \sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i^*}{n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n}  x_i)^2} \\
-	a^* &= \frac{\sum_{i=1}^{n} y_i^* - b^* \sum_{i=1}^{n} x_i  }{n} \\
+	\beta^* &= \frac{n \sum_{i=1}^{n} x_iy_i^* - \sum_{i=1}^{n} x_i \sum_{i=1}^{n} y_i^*}{n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n}  x_i)^2} \\
+	\alpha^* &= \frac{\sum_{i=1}^{n} y_i^* - b^* \sum_{i=1}^{n} x_i  }{n} \\
 \end{align*}
 Para el modelo potencial, es necesario sustituir los valores $x_i$ en la formula por las $x^*$ que corresponden a la evaluación de $\ln(x_i)$.
-\par Con la siguiente tabla obtenemos los datos para utilizar en los cálculos de las ecuaciones anteriores
-\begin{table}[H]
-	\centering
-	\begin{tabular}{c | c | c | c}
-		$x_i$ & $y^*$ &	$X_iy^*$ & \\ \hline
-		1.00 & 	0.6575 &	0.6575	& 1.000 \\
-1.10 & 	0.4762 &	0.5239	& 1.2100 \\
-1.20 & 	0.8198 &	0.9837	& 1.4400 \\
-1.30 & 	1.1600 &	1.5080	& 1.6900 \\
-1.40 & 	1.1600 &	1.6240	& 1.9600 \\
-1.50 & 	1.3110 &	1.9665	& 2.2500 \\
-1.60 & 	1.4563 &	2.3301	& 2.5600 \\
-1.70 & 	1.5994 &	2.7190	& 2.8900 \\
-1.80 & 	1.8034 &	3.2460	& 3.2400 \\
-1.90 & 	2.0122 &	3.8232	& 3.6100 \\
-2.00 & 	2.1656 &	4.3312	& 4.000 \\
-2.10 & 	2.2343 &	4.6920	& 4.4100 \\
-2.20 & 	2.4527 &    5.3960	& 4.8400 \\ \hline
-Total= 20.8000 &	Total=19.3085	& Total=33.8013	& Total=35.1000 \\ \hline
-	\end{tabular}
-\end{table}
-Con lo anterior obtenemos los valores  de $\beta$ y $\alpha$ los cuales son $-1.0709$ y $1.5976$, respectivamente.
+Con el uso de \textit{MATLAB} u otro método analítico, obtenemos los datos para utilizar en los cálculos de las ecuaciones anteriores.s
+% AAAAAAAAAAAAAAAAAAAAAAAA METODO POTENCIAL
+\subsection{Método Potencial}
+
+
 %---------------
 %PUNTO 2
 %---------------
@@ -217,12 +271,11 @@ $ \\
 \subsubsection{Ejercicio propuesto usando el método de la parábola de mínimos cuadrados}
 A continuación se presenta el siguiente problema:
 \begin{center}
-	\textbf{\textit{Problema 4:}} En la investigación de accidentes automovilísticos, el tiempo total requerido para el frenado total de un automóvil después de que el conductor ha percibido un peligro está compuesto de su tiempo de reacción (el tiempo que transcurre en su detección del peligro y la aplicación de los frenos) más el tiempo de frenado (el tiempo que tarda el automóvil en detenerse después de la aplicación de los frenos). La siguiente tabla proporciona la distancia de frenado D en metros de un automóvil que viaja a diversas velocidades V en metros por segundo al momento en el cual el conductor detecta un peligro.
+	\textit{\textbf{Problema 4:} En la investigación de accidentes automovilísticos, el tiempo total requerido para el frenado total de un automóvil después de que el conductor ha percibido un peligro está compuesto de su tiempo de reacción (el tiempo que transcurre en su detección del peligro y la aplicación de los frenos) más el tiempo de frenado (el tiempo que tarda el automóvil en detenerse después de la aplicación de los frenos). La siguiente tabla proporciona la distancia de frenado D en metros de un automóvil que viaja a diversas velocidades V en metros por segundo al momento en el cual el conductor detecta un peligro.}
 	\linebreak\par
-	\begin{tabular}{|c|c|c|c|c|c|c| }
-		\hline
-		Velociad V(m/s) &   20 & 30 & 40 & 50 & 60 & 70 \\
-		\hline
+	\begin{tabular}{c| c c c c c c }
+	\hline
+		Velociad V(m/s) &   20 & 30 & 40 & 50 & 60 & 70 \\ 		\hline
 		Distancia de frenado D(m) & 54 & 90 & 138 & 206 & 292 & 396 \\
 		\hline
 	\end{tabular}
@@ -233,7 +286,7 @@ A continuación se presenta el siguiente problema:
 	\end{itemize}
 \end{center}
 
-Para resolver este problemas haremos uso de \emph{MATLAB} de la siguiente forma. En este caso las $X$ las usaremos como $V$, mientras que los valores de $Y$ serán $D$
+Para resolver este problema haremos uso de \emph{MATLAB} de la siguiente forma. En este caso las $X$ las usaremos como los valores $V$ de velocidad, mientras que los valores de $Y$ serán la distancia $D$
 %Implementacion matlab1
 \begin{figure}[H]
 \begin{tcolorbox}[title=Problema 4: Implementación en MATLAB]
@@ -262,7 +315,7 @@ end
 Con esto podemos armar la matriz  \texttt{M} , y la submatriz \texttt{subM}, que contendrán la matriz principal con los datos de las sumas de X, y los valores de los resultados respectivamente. A su vez, haremos uso de una matriz auxiliar \texttt{Maux} que será una copia de la matriz original, con los valores de la submatriz \texttt{subM} en una de las columnas como lo requiere el método de determinantes.
 %matlab3
 \begin{figure}[H]
-\begin{tcolorbox}[breakable, title=Problema 4: Implementación en MATLAB]
+\begin{tcolorbox}[ title=Problema 4: Implementación en MATLAB]
 		\begin{verbatim}
 		%% Creacion de la matriz M y submatriz subM
 M = [ N suma_X suma_X2; suma_X suma_X2 suma_X3; suma_X2 suma_X3 suma_X4];
@@ -277,7 +330,7 @@ end
 		\end{verbatim}
 		\end{tcolorbox}
 		\centering
-		\includegraphics[width=2.5in]{mtz4.png}
+		\includegraphics[width=2.8in]{mtz4.png}
 
 \end{figure}
 La demostración anterior queda resuelta la matriz y obtenemos los valores de $a_n$ (es de notar al lector que \textit{MATLAB} cuenta los arreglos y matrices desde el 1 por lo que \texttt{a(1)	} es igual a $a_0$) los cuales son: \par. 
@@ -328,10 +381,120 @@ Para minimizar la función se debe derivar parcialmente con respecto a cada coef
 \end{align*}
 \par
 Una vez obtenido este sistema de ecuaciones se puede resolver mediante matrices o cualquier otro método de resolución de sistemas de ecuaciones.
-\par  Una vez encontrados los valores de todos los coeficientes se puede crear el polinomio de la forma  $p(n) = a_0 + a_1x + a_2x^2 + a_3x^3 + \dots + a_nx^n$ . Este es una expansión del método anterior que se desarrolló, puesto que a partir de esta forma general se puede obtener el caso de la parábola cuando se trabaja con un polinomio de grado $n = 2$.
-\cite{nieves2011metodos}
+\par  Una vez encontrados los valores de todos los coeficientes se puede crear el polinomio de la forma  $p(n) = a_0 + a_1x + a_2x^2 + a_3x^3 + \dots + a_nx^n$ . Este es una expansión del método anterior que se desarrolló, puesto que a partir de esta forma general se puede obtener el caso de la parábola cuando se trabaja con un polinomio de grado $n = 2$.\cite{nieves2011metodos} A continuación, se muestra un ejemplo práctico para su comprensión junto con un algoritmo de resolución en \textit{MATLAB}.
+\begin{center}
+\textit{\textbf{Ejemplo 2:} El calor específico $C_p$ (cal/kg mol) del $Mn_3O_4$ varía con la temperatura. A partir de la siguiente tabla, aproxime la información con un polinomio por el método de mínimos cuadrados.} \cite{nieves2011metodos}
+\linebreak \par
+	\begin{tabular}{c|c c c c c c}
+	\hline 
+	T (°K) & 280 & 650 & 1000 & 1200 & 1500 & 1700 \\ \hline
+	$C_p$ (cal/kg mol) & 32.7 & 45.4 & 52.15 & 53.7 & 52.9 & 50.3 \\ 
+	\hline 
+	\end{tabular} 
+\end{center}
+
+Se hará uso del siguiente algoritmo en \textit{MATLAB} para mostrar el resultado de este método con $n=4$
+\begin{figure}[H]
+\begin{tcolorbox}[title=Ejemplo 2: Implementación en MATLAB]
+\begin{verbatim}
+syms x;
+X = [280 650 1000 1200 1500 1700];
+Y = [32.7 45.4 52.15 53.7 52.9 50.3];
+xEvaluar = 1500;
+%n se ocupará para indicar el grado del polinomio
+n = 4;
+% Guardar el valor de la sumatoria de Y
+sumY = 0;
+for j=1:length(Y)
+   sumY = sumY + Y(j); 
+end
+%Guardar en un vector las sumas de todos los valores de X elevadas a sus
+%potencias desde 1 hasta 2n 
+for i=1:2*n
+    sum = 0;
+   for j=1:length(X)
+       sum = sum + (X(j))^i;
+   end
+   sumXs(i) = sum;
+end
+%Creando un vector que almacene los resultados de la matriz
+for i=1: n+1
+    if i == 1
+        resM(i) = sumY; 
+    else
+        sumatoria = 0;
+        for j=1:length(X)
+             sumatoria = sumatoria + Y(j)*X(j)^(i-1);
+        end
+        resM(i) = sumatoria;
+    end
+end
+\end{verbatim}
+\end{tcolorbox}
+\end{figure}
+El algoritmo anterior nos ayuda a dar las sumas de los valores requeridos, los cuales son almacenados dentro de una matriz \texttt{sisM} como veremos a continuación donde se llenaran todas sus filas. La matriz resultante en \textit{MATLAB }se muestra en la \textit{Figura \ref{figure:sisM}}.
+
+\begin{figure}[H]
+\begin{tcolorbox}[title=Ejemplo 2: Implementación en MATLAB]
+\begin{verbatim}
+k = length(resM);
+sisM = zeros(k);
+for j=1:k %Llenando la primera fila
+    if j == 1
+        sisM(j,j) = length(X);
+    else
+        sisM(1,j) = sumXs(j-1);
+    end
+end
+for i=2:k % Llenando el resto de filas
+   for j=1:k
+       if(i == 2)
+           sisM(i,j) = sumXs(j);
+       else
+           sisM(i,j) = sumXs(i+j-2);
+       end
+   end
+end
+sisM(k,k) = sumXs(2*n);
+\end{verbatim}
+\end{tcolorbox}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=6in]{sisM.png}
+\label{figure:sisM}
+\end{figure}
+Con la matriz creado es momento de pasar a resolver el sistema para obtener los coeficientes del polinomio y posteriormente, la respuesta al problema.
+\begin{figure}[H]
+\begin{tcolorbox}[title=Ejemplo 2: Implementación en MATLAB]
+\begin{verbatim}
+%Resolver el sistema de ecuaciones
+detM=det(sisM); % lo guardamos para no requerir calcularlo siempre
+for i=1:k
+   newMatrix = sisM;
+   newMatrix(:,i) = resM;
+   coeficientes(i) = det(newMatrix)/detM;
+end
+% Generando el polinomio
+pol = coeficientes(1);
+for i=2:k
+    pol = pol + coeficientes(i)*x^(i-1);
+end
+estimacion = double(subs(pol,xEvaluar)); %% Respuesta
+\end{verbatim}
+\end{tcolorbox}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=6in]{ej2ans.png}
+\label{figure:ans2}
+\end{figure}
 
 
+
+%+++++++++++++++++++++++
+% BIBLIOGRAFIA
+% +++++++++++++++++++++++
 \bibliographystyle{IEEEtran}
 \bibliography{bibi}
 \end{document}
