@@ -1,64 +1,46 @@
-disp('<---------- Ejercicio 2 -------------->')
-%se tiene la ecuacion v=a(?P)^b, para poder utilizar minimos cuadrados
-% ocupamos propiedades de los logaritmos, quedando ln(v) = ln(a) + bln(?P)
-%una vez definida esa formula realizamos un cambio de variable definiendo
-%que Y = ln(v) y X = ln(?P) y asi tenemos la formula Y = bx + ln(a) donde
-%ya se puede utilizar minimos cuadrados para encontrar a y b
+%Ejercicio 2
+syms x;
+% Valores de la Diferencia de Presión y Velocidad Promedio
+DP = [30.0 35.5 50.5 75.0 92.0 105.0 115.0 130.0 153.5 180.0 199.5];
+V =[3.83 4.17 4.97 6.06 6.71 7.17 7.51 7.98 8.67 9.39 9.89];
+f = log(x);
+val = 5.5; % valor al que queremos aproximar
+%Calculamos las xi y yi
+xi_lndp = double(subs(f,DP));
+yi_lnv = double(subs(f,V));
+n= length(DP);
 
-syms p;
-P = [30.00 35.5 50.5 75.0 92.0 105.0 115.0 130.0 153.5 180.0 199.5];
-V = [3.83 4.17 4.97 6.06 6.71 7.17 7.51 7.98 8.67 9.39 9.89];
-n = length(P);
+  for i=1:n
+    %Calculamos las xi*yi
+    xiyi(i)= xi_lndp(i)*yi_lnv(i);
+    %Calculamos las xi^2
+    xi2(i) = (xi_lndp(i))^2;
+  end
+%Calculamos las sumatorias
+sum_xiyi = sum(xiyi);
+sum_xi =sum(xi_lndp);
+sum_yi =sum(yi_lnv);
+sum_xi2 =sum(xi2);
 
-%como se tiene que X = ln(?P) y Y = ln(v) ahora se calcula
 
-for i=1:n
-    X(i) = log(P(i));
-    Y(i) = log(V(i));
-end
+%Calculamos b y a
+b = ((n)*(sum_xiyi)-(sum_xi)*(sum_yi))/((n)*(sum_xi2)-(sum_xi)^2);
+a = ((sum_yi)-(b)*(sum_xi))/(n);
+alpha= exp(a); betha = b;
+%Nuestra funcion nos queda como:
+disp('El modelo potencial nos queda: ');
+modelo = alpha*(x^(betha));
+pretty(vpa(modelo, 5));
+estimacion = double(subs(modelo, val));
+fprintf('\n\nEl valor aproximado de la velocidad del fluido en una caída de presión de %.1f mmHg es: %.15f ft/s\n' , val, estimacion)
 
-%una ves se tiene X y Y realizamos las sumatorias para aplicar minimos
-%cuadrados
-
-sumatoriaX = sum(X);
-sumatoriaY = sum(Y);
-multiXY=0;
-X2=0;
-
-for i=1:n
-    multiXY = multiXY + (X(i)*Y(i));
-    X2 = X2 + X(i)^2;
-end
-
-%sacando la pendiente en este caso es B
-B = (multiXY-((sumatoriaX*sumatoriaY)/n))/(X2-(sumatoriaX^2/n));
-
-%sacando ln(A)
-lna = (sumatoriaY-(B*sumatoriaX))/n;
-
-%ya tenemos ln(A), pero lo que se quiere es A, por lo tanto
-%aplicamos e para eliminar el ln
-
-A = exp(lna);
-
-%para encontrar v en un ?P = 5.5mmHg solo se aplica a la
-%formula original v = a(?P)^b sus tituyendo a ?P y b se obtiene:
-
-v = A*(p)^B;
-velocidad = subs(v,5.5);
-fprintf('La velocidad del fluido en P = 5.5mmHg es: %.15f\n', double(velocidad))
-
-%graficando La recta de minimos cuadrados
-fplot(matlabFunction(v), [30 199.5], 'g')
-hold on;
-
-% Graficar los puntos experimentales
-plot(P, V, 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'r'); 
-
-% Etiquetas y título
-ylabel('Velocidad (pies/s)');
-xlabel('Caida de presión (mmHg)');
-title('Ajuste de mínimos cuadrados: Caida de presión vs Velociad Promedio');
-legend('Recta ajustada', 'Datos experimentales', 'Location', 'best');
-grid on;
-
+% Graficando
+plot(DP, V, '*r')
+hold on
+grid on
+plot(val, estimacion, '*g')
+ezplot(modelo, [0 200])
+legend('Valores iniciales de DP y V', 'Punto de estimación', 'Modelo de aproximación')
+title('Problema 2')
+ylabel('Velocidad promedio (ft/s)')
+xlabel('Caída de presión (mm Hg)')
