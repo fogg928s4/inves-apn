@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.16)  23 MAR 2025 23:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.16)  24 MAR 2025 23:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,28 +836,30 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (C:\Users\rjmze\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbposter.cod
 e.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
+) (C:\Users\rjmze\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ) (te.aux
 LaTeX Info: Redefining \. on input line 9.
 LaTeX Info: Redefining \% on input line 9.
 )
 \openout1 = `te.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Info: Redefining \. on input line 31.
-LaTeX Info: Redefining \% on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Info: Redefining \. on input line 32.
+LaTeX Info: Redefining \% on input line 32.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -928,13 +930,13 @@ e.sty
 Package: xparse 2024-08-16 L3 Experimental document command parser
 ))
 \c@lstlisting=\count360
-LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
 
 
 (C:\Users\rjmze\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
 
 
 (C:\Users\rjmze\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -947,7 +949,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <./img/eq1.png, id=57, 556.32843pt x 249.18094pt>
 File: ./img/eq1.png Graphic file (type png)
 <use ./img/eq1.png>
-Package pdftex.def Info: ./img/eq1.png  used on input line 117.
+Package pdftex.def Info: ./img/eq1.png  used on input line 118.
 (pdftex.def)             Requested size: 325.215pt x 145.66568pt.
 
 
@@ -955,68 +957,138 @@ Package pdftex.def Info: ./img/eq1.png  used on input line 117.
 <./img/res1.png, id=67, 556.32843pt x 96.36pt>
 File: ./img/res1.png Graphic file (type png)
 <use ./img/res1.png>
-Package pdftex.def Info: ./img/res1.png  used on input line 125.
+Package pdftex.def Info: ./img/res1.png  used on input line 126.
 (pdftex.def)             Requested size: 289.07999pt x 50.07071pt.
 <./img/recta.png, id=68, 528.47438pt x 473.51906pt>
 File: ./img/recta.png Graphic file (type png)
 <use ./img/recta.png>
-Package pdftex.def Info: ./img/recta.png  used on input line 132.
+Package pdftex.def Info: ./img/recta.png  used on input line 133.
 (pdftex.def)             Requested size: 252.94499pt x 226.63628pt.
 
 
 [3 <./img/eq1.png> <./img/res1.png> <./img/recta.png>]
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 201--204
+
+[5]
+<./img/ab2.png, id=83, 320.69812pt x 419.31656pt>
+File: ./img/ab2.png Graphic file (type png)
+<use ./img/ab2.png>
+Package pdftex.def Info: ./img/ab2.png  used on input line 262.
+(pdftex.def)             Requested size: 180.67499pt x 236.23607pt.
+
+
+[6]
+<./img/res2.png, id=87, 1096.84781pt x 197.23688pt>
+File: ./img/res2.png Graphic file (type png)
+<use ./img/res2.png>
+Package pdftex.def Info: ./img/res2.png  used on input line 269.
+(pdftex.def)             Requested size: 361.34999pt x 64.977pt.
+<./img/graf2.png, id=88, 528.47438pt x 473.51906pt>
+File: ./img/graf2.png Graphic file (type png)
+<use ./img/graf2.png>
+Package pdftex.def Info: ./img/graf2.png  used on input line 276.
+(pdftex.def)             Requested size: 195.12877pt x 174.83803pt.
+
+
+[7 <./img/ab2.png> <./img/res2.png> <./img/graf2.png>]
+<./img/ab3.png, id=96, 806.26219pt x 320.69812pt>
+File: ./img/ab3.png Graphic file (type png)
+<use ./img/ab3.png>
+Package pdftex.def Info: ./img/ab3.png  used on input line 343.
+(pdftex.def)             Requested size: 289.07999pt x 114.98146pt.
+
+
+[8]
+<./img/res3.png, id=100, 922.94812pt x 101.62968pt>
+File: ./img/res3.png Graphic file (type png)
+<use ./img/res3.png>
+Package pdftex.def Info: ./img/res3.png  used on input line 350.
+(pdftex.def)             Requested size: 433.62pt x 47.74733pt.
+<./img/exp3.png, id=101, 458.46281pt x 411.03563pt>
+File: ./img/exp3.png Graphic file (type png)
+<use ./img/exp3.png>
+Package pdftex.def Info: ./img/exp3.png  used on input line 356.
+(pdftex.def)             Requested size: 202.35622pt x 181.4207pt.
+
+
+[9 <./img/ab3.png> <./img/res3.png>]
+
+[10 <./img/exp3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 405--408
 
  []
 
 
 
-[5]
-
-[6]
-<./img/mtz4.png, id=85, 505.89pt x 291.33844pt>
+[11]
+<./img/mtz4.png, id=114, 505.89pt x 291.33844pt>
 File: ./img/mtz4.png Graphic file (type png)
 <use ./img/mtz4.png>
-Package pdftex.def Info: ./img/mtz4.png  used on input line 331.
+Package pdftex.def Info: ./img/mtz4.png  used on input line 536.
 (pdftex.def)             Requested size: 202.35622pt x 116.53775pt.
 
 
-[7 <./img/mtz4.png>]
-<./img/res4.png, id=91, 592.46344pt x 309.40594pt>
+[12]
+<./img/res4.png, id=118, 592.46344pt x 309.40594pt>
 File: ./img/res4.png Graphic file (type png)
 <use ./img/res4.png>
-Package pdftex.def Info: ./img/res4.png  used on input line 355.
+Package pdftex.def Info: ./img/res4.png  used on input line 561.
 (pdftex.def)             Requested size: 252.94499pt x 132.09772pt.
-<./img/parab4.png, id=92, 528.47438pt x 428.35031pt>
+<./img/parab4.png, id=119, 528.47438pt x 428.35031pt>
 File: ./img/parab4.png Graphic file (type png)
 <use ./img/parab4.png>
-Package pdftex.def Info: ./img/parab4.png  used on input line 360.
-(pdftex.def)             Requested size: 289.07999pt x 234.31232pt.
+Package pdftex.def Info: ./img/parab4.png  used on input line 568.
+(pdftex.def)             Requested size: 216.81pt x 175.72934pt.
 
 
-[8 <./img/res4.png>]
+[13 <./img/mtz4.png> <./img/res4.png>]
 
-[9 <./img/parab4.png>]
-<./img/sisM.png, id=101, 1067.48813pt x 170.88844pt>
+[14 <./img/parab4.png>]
+
+[15]
+
+[16]
+<./img/sisM.png, id=136, 1067.48813pt x 170.88844pt>
 File: ./img/sisM.png Graphic file (type png)
 <use ./img/sisM.png>
-Package pdftex.def Info: ./img/sisM.png  used on input line 462.
+Package pdftex.def Info: ./img/sisM.png  used on input line 683.
 (pdftex.def)             Requested size: 433.62pt x 69.41542pt.
-
-
-[10]
-<./img/ej2ans.png, id=105, 1065.22969pt x 197.23688pt>
+<./img/ej2ans.png, id=137, 1065.22969pt x 197.23688pt>
 File: ./img/ej2ans.png Graphic file (type png)
 <use ./img/ej2ans.png>
-Package pdftex.def Info: ./img/ej2ans.png  used on input line 487.
+Package pdftex.def Info: ./img/ej2ans.png  used on input line 710.
 (pdftex.def)             Requested size: 433.62pt x 80.28677pt.
 
 
-[11 <./img/sisM.png>] (te.bbl)
+[17 <./img/sisM.png>]
 
-[12 <./img/ej2ans.png>] (te.aux
+[18 <./img/ej2ans.png>]
+
+[19]
+<./img/mtz5.png, id=150, 842.39719pt x 255.20343pt>
+File: ./img/mtz5.png Graphic file (type png)
+<use ./img/mtz5.png>
+Package pdftex.def Info: ./img/mtz5.png  used on input line 830.
+(pdftex.def)             Requested size: 361.34999pt x 109.47054pt.
+
+
+[20]
+<./img/res5.png, id=156, 579.66562pt x 162.6075pt>
+File: ./img/res5.png Graphic file (type png)
+<use ./img/res5.png>
+Package pdftex.def Info: ./img/res5.png  used on input line 837.
+(pdftex.def)             Requested size: 361.34999pt x 101.36642pt.
+<./img/graf5.png, id=157, 528.47438pt x 473.51906pt>
+File: ./img/graf5.png Graphic file (type png)
+<use ./img/graf5.png>
+Package pdftex.def Info: ./img/graf5.png  used on input line 844.
+(pdftex.def)             Requested size: 216.81pt x 194.25966pt.
+ (te.bbl
+
+[21 <./img/mtz5.png> <./img/res5.png> <./img/graf5.png>])
+
+[22] (te.aux
 LaTeX Info: Redefining \. on input line 9.
 LaTeX Info: Redefining \% on input line 9.
 )
@@ -1026,13 +1098,13 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 25092 strings out of 473523
- 544807 string characters out of 5714630
- 980214 words of memory out of 5000000
- 47911 multiletter control sequences out of 15000+600000
- 568503 words of font info for 71 fonts, out of 8000000 for 9000
+ 25293 strings out of 473523
+ 548262 string characters out of 5714630
+ 988352 words of memory out of 5000000
+ 48102 multiletter control sequences out of 15000+600000
+ 571038 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,17n,105p,683b,685s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,17n,105p,683b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\rjmze\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1095.pk> <C:\Users\rjmze\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcti1095.pk><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1050,14 +1122,17 @@ blic/amsfonts/cm/cmr12.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr17.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/rjmze/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/rjmze/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rjmze/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/rjm
-ze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
-Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10
-.pfb>
-Output written on te.pdf (12 pages, 554460 bytes).
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/rjmze/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rjmz
+e/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Us
+ers/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmti10.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmti9.pfb><C:/Users/rjmze/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmtt10.pfb>
+Output written on te.pdf (22 pages, 897528 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
+ 257 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 197 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 242 words of extra memory for PDF output out of 10000 (max. 10000000)
 
