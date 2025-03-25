@@ -6,7 +6,8 @@
 X = [20, 30, 40, 50, 60, 70];
 
 Y = [54, 90, 138, 206, 292, 396];
-t = 55;
+t1 = 55;
+t2 = 175;
 suma_X = 0; suma_X2 = 0;
 suma_X3 = 0; suma_X4 = 0;
 suma_Y = 0; suma_XY = 0;
@@ -35,6 +36,16 @@ end
 % Armando el polinomio con los valores de a encontrados
 syms x;
 P = a(1) + a(2) * x  + a(3) * x ^ 2;
-aprox = subs(P, t);
+aprox1 = double(subs(P, t1));
+aprox2 = double(subs(P,t2));
 % estimacion
-fprintf('El valor de aproximado para %d es de: %.9f\n', t, double(aprox));
+fprintf('El valor de aproximado para %d es de: %.9f\n', t1, aprox1);
+fprintf('El valor de aproximado para %d es de: %.9f\n', t2, aprox2);
+
+%% GRAFICANDO
+plot(X,Y,'*r', t1, aprox1, '*g', t2,aprox2, '*g');
+hold on; grid on;
+ezplot(P, [15 80]);
+legend('Valores iniciales', 'Valor de interpolación', 'Valor de extrapolación', 'Parábola de aproximación');
+xlabel('Velocidad (m/s)');
+ylabel('Distancia de frenado requerida (m)');
